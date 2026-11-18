@@ -27,7 +27,7 @@ RES = opt("--res", 512)
 SAMPLES = opt("--samples", 24)
 CLAY = opt("--clay", "workbench")
 IDS = [s for s in opt("--ids", "").split(",") if s]
-MODELS = ("tripo-h31", "meshy")
+MODELS = tuple(opt("--models", os.environ.get("ANYKIT_MODELS", "tripo-h31,meshy")).split(","))  # local fork: --models trellis2,pixal3d
 os.makedirs(OUT, exist_ok=True)
 
 
