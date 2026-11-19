@@ -1,0 +1,348 @@
+{
+ "kit": "Polyarnik",
+ "labels": [
+  {
+   "id": "toolbox_front",
+   "item": "toolbox",
+   "view": "front",
+   "center": [
+    -0.005,
+    -0.056
+   ],
+   "size": [
+    0.245,
+    0.085
+   ],
+   "style": "stencil",
+   "color": "#dcd5b0",
+   "wear": 0.45,
+   "tol": 0.004,
+   "line_gap": 0.0075,
+   "lines": [
+    {
+     "text": "ПОЛЯРНИК-3",
+     "cap": 0.026,
+     "track": 0.06
+    },
+    {
+     "text": "ИНСТРУМЕНТ",
+     "cap": 0.019,
+     "track": 0.08
+    },
+    {
+     "text": "ЗАВОД СЕВЕР  №0417",
+     "cap": 0.008,
+     "track": 0.1
+    }
+   ],
+   "ground_bias": "dark"
+  },
+  {
+   "id": "toolbox_lid_wipeA",
+   "item": "toolbox",
+   "view": "top",
+   "center": [
+    0.017,
+    0.051
+   ],
+   "size": [
+    0.09,
+    0.055
+   ],
+   "tol": 0.004,
+   "occlusion": false,
+   "ground_bias": "dark"
+  },
+  {
+   "id": "toolbox_lid_wipeB",
+   "item": "toolbox",
+   "view": "top",
+   "center": [
+    0.018,
+    -0.027
+   ],
+   "size": [
+    0.1,
+    0.05
+   ],
+   "tol": 0.0025,
+   "occlusion": false,
+   "ground_bias": "dark"
+  },
+  {
+   "id": "toolbox_lid_front",
+   "item": "toolbox",
+   "view": "top",
+   "center": [
+    0.0,
+    -0.066
+   ],
+   "size": [
+    0.3,
+    0.04
+   ],
+   "tol": 0.004,
+   "style": "stencil",
+   "color": "#dcd5b0",
+   "wear": 0.5,
+   "lines": [
+    {
+     "text": "ЗАВОД СЕВЕР",
+     "cap": 0.017,
+     "track": 0.12
+    }
+   ],
+   "ground_bias": "dark"
+  },
+  {
+   "id": "toolbox_lid_back",
+   "item": "toolbox",
+   "view": "top",
+   "center": [
+    0.0,
+    0.07
+   ],
+   "size": [
+    0.22,
+    0.03
+   ],
+   "tol": 0.004,
+   "style": "stencil",
+   "color": "#dcd5b0",
+   "wear": 0.5,
+   "lines": [
+    {
+     "text": "МАКС. 15 КГ",
+     "cap": 0.012,
+     "track": 0.1
+    }
+   ],
+   "ground_bias": "dark"
+  },
+  {
+   "id": "heater_front",
+   "item": "heater",
+   "view": "front",
+   "mode": "cylinder",
+   "center": [
+    0.003,
+    0.018
+   ],
+   "size": [
+    0.1,
+    0.05
+   ],
+   "tol": 0.004,
+   "ring": 0.008,
+   "style": "stencil",
+   "color": "#dcd5b0",
+   "wear": 0.45,
+   "line_gap": 0.006,
+   "lines": [
+    {
+     "text": "ПОЛЯРНИК-3",
+     "cap": 0.0132,
+     "track": 0.06
+    },
+    {
+     "text": "ОБОГРЕВАТЕЛЬ",
+     "cap": 0.0096,
+     "track": 0.05
+    },
+    {
+     "text": "ЗАВОД СЕВЕР",
+     "cap": 0.0058,
+     "track": 0.1
+    }
+   ],
+   "ground_bias": "dark"
+  },
+  {
+   "id": "radio_plate",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    0.0618,
+    -0.0161
+   ],
+   "size": [
+    0.0414,
+    0.0127
+   ],
+   "tol": 0.0025,
+   "style": "print",
+   "color": "#17150f",
+   "wear": 0.05,
+   "line_gap": 0.0025,
+   "ground": "auto",
+   "lines": [
+    {
+     "text": "РП-3",
+     "cap": 0.0068,
+     "track": 0.1
+    },
+    {
+     "text": "ПОЛЯРНИК",
+     "cap": 0.0048,
+     "track": 0.1
+    }
+   ],
+   "ground_bias": "light"
+  },
+  {
+   "id": "radio_leg_tone",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    -0.0543,
+    -0.0248
+   ],
+   "size": [
+    0.0228,
+    0.0131
+   ],
+   "tol": 0.0025,
+   "style": "print",
+   "color": "#17150f",
+   "wear": 0.05,
+   "lines": [
+    {
+     "text": "ТОН",
+     "cap": 0.0058,
+     "track": 0.12
+    }
+   ],
+   "ground_bias": "light"
+  },
+  {
+   "id": "radio_leg_noise",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    0.0728,
+    -0.0289
+   ],
+   "size": [
+    0.0355,
+    0.0112
+   ],
+   "tol": 0.0025,
+   "style": "print",
+   "color": "#17150f",
+   "wear": 0.05,
+   "lines": [
+    {
+     "text": "ШУМ",
+     "cap": 0.0058,
+     "track": 0.12
+    }
+   ],
+   "ground_bias": "light"
+  },
+  {
+   "id": "radio_leg_vol",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    -0.0499,
+    -0.0829
+   ],
+   "size": [
+    0.0345,
+    0.0127
+   ],
+   "tol": 0.0025,
+   "style": "print",
+   "color": "#17150f",
+   "wear": 0.05,
+   "lines": [
+    {
+     "text": "ГРОМК.",
+     "cap": 0.0058,
+     "track": 0.12
+    }
+   ],
+   "ground_bias": "light"
+  },
+  {
+   "id": "radio_leg_tune",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    0.0093,
+    -0.0829
+   ],
+   "size": [
+    0.0392,
+    0.0127
+   ],
+   "tol": 0.0025,
+   "style": "print",
+   "color": "#17150f",
+   "wear": 0.05,
+   "lines": [
+    {
+     "text": "НАСТР.",
+     "cap": 0.0058,
+     "track": 0.12
+    }
+   ],
+   "ground_bias": "light"
+  },
+  {
+   "id": "radio_leg_band",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    0.0635,
+    -0.0829
+   ],
+   "size": [
+    0.0429,
+    0.0127
+   ],
+   "tol": 0.0025,
+   "style": "print",
+   "color": "#17150f",
+   "wear": 0.05,
+   "lines": [
+    {
+     "text": "ДИАП.",
+     "cap": 0.0058,
+     "track": 0.12
+    }
+   ],
+   "ground_bias": "light"
+  },
+  {
+   "id": "radio_wipe_mid",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    -0.0198,
+    -0.1045
+   ],
+   "size": [
+    0.0246,
+    0.0168
+   ],
+   "tol": 0.0025,
+   "ground_bias": "light"
+  },
+  {
+   "id": "radio_wipe_mid2",
+   "item": "field_radio",
+   "view": "front",
+   "center": [
+    0.0398,
+    -0.1045
+   ],
+   "size": [
+    0.025,
+    0.0168
+   ],
+   "tol": 0.0025,
+   "ground_bias": "light"
+  }
+ ]
+}

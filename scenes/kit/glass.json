@@ -1,0 +1,5 @@
+{"windows": [
+ {"id": "dial_left",  "item": "field_radio", "view": "front", "shape": "ellipse", "center": [-0.0355, 0.0187], "size": [0.07, 0.07]},
+ {"id": "dial_right", "item": "field_radio", "view": "front", "shape": "rect",    "center": [0.056, 0.0187],   "size": [0.075, 0.06]},
+ {"id": "dial_mid",   "item": "field_radio", "view": "front", "shape": "rect",    "center": [0.0093, -0.039],  "size": [0.075, 0.055]}
+]}
