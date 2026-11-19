@@ -2,7 +2,7 @@
 a thumbnail per item, and optionally a turntable per item.
 
     blender -b --factory-startup --python kit/tools/present.py -- --kit out/kit.json --items out/items --out out/renders \
-        [--only lineup|thumbs|turntable] [--samples 128] [--warmth 0] [--turntable 48] [--ids a,b]
+        [--only lineup|thumbs|turntable] [--samples 128] [--device GPU|CPU] [--scale 1.0] [--warmth 0] [--turntable 48] [--ids a,b]
 
 Reads item ids and labels from kit.json ("items": [{"id", "label"}, ...]) and loads out/items/<id>/<id>.glb as they
 are (already normalised: metres, bottom-centre origin, facing -Y). Writes lineup.png, thumbs/<id>.png and
@@ -28,6 +28,8 @@ ONLY = opt("--only", "")
 SAMPLES = opt("--samples", 128)
 WARMTH = opt("--warmth", 0.0)
 TURN = opt("--turntable", 0)
+DEVICE = opt("--device", "GPU")  # CPU when the GPU is busy
+SCALE = opt("--scale", 1.0)  # render-resolution multiplier (0.5 = quick preview)
 IDS = [s for s in opt("--ids", "").split(",") if s]
 os.makedirs(OUT, exist_ok=True)
 
@@ -48,7 +50,7 @@ def setup():
     bpy.ops.wm.read_factory_settings(use_empty=True)
     sc = bpy.context.scene
     sc.render.engine = "CYCLES"
-    sc.cycles.device = "GPU"
+    sc.cycles.device = DEVICE
     sc.cycles.samples = SAMPLES
     sc.cycles.use_denoising = True
     sc.view_settings.view_transform = "AgX"
@@ -185,7 +187,7 @@ def lineup():
     bpy.context.view_layer.update()
     lo2, hi2 = bounds(allm)
     centre = Vector(((lo.x + hi.x) / 2, (lo.y + hi.y) / 2 - 0.1 * depth, (hi2.z) * 0.42))
-    sc.render.resolution_x, sc.render.resolution_y = 2400, 1000
+    sc.render.resolution_x, sc.render.resolution_y = int(2400 * SCALE), int(1000 * SCALE)
     cam = camera(50)
     fov_h = cam.data.angle
     width = max(total * 1.2, (hi2.z) * 2.4 * 1.5)
@@ -208,13 +210,13 @@ def per_item(turntable=False):
         cam = camera(70)
         dist = radius / math.sin(cam.data.angle / 2) * 1.05
         if not turntable:
-            sc.render.resolution_x = sc.render.resolution_y = 1024
+            sc.render.resolution_x = sc.render.resolution_y = int(1024 * SCALE)
             aim(cam, centre, -30, 20, dist)
             os.makedirs(os.path.join(OUT, "thumbs"), exist_ok=True)
             sc.render.filepath = os.path.join(OUT, "thumbs", f"{it['id']}.png")
             bpy.ops.render.render(write_still=True)
             continue
-        sc.render.resolution_x = sc.render.resolution_y = 640
+        sc.render.resolution_x = sc.render.resolution_y = int(640 * SCALE)
         sc.cycles.samples = min(SAMPLES, 48)
         tmp = os.path.join(OUT, "turntables", f"_{it['id']}")
         os.makedirs(tmp, exist_ok=True)

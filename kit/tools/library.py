@@ -1,7 +1,7 @@
 """kit.blend: a Blender asset library holding every kit item, each marked as an asset with a preview, label, tags
 and its LOD1 alongside.
 
-    blender -b --factory-startup --python kit/tools/library.py -- --kit out/kit.json --items out/items --out out/kit.blend
+    blender -b --factory-startup --python kit/tools/library.py -- --kit out/kit.json --items out/items --out out/kit.blend [--thumbs out/renders/thumbs]
 
 Each item is one object named <id> (LOD0) in a collection named after the kit, laid out in a row so the file is also
 browsable; <id>_lod1 sits in a hidden "LOD1" collection. Everything is packed. A blender_assets.cats.txt with one
@@ -21,6 +21,7 @@ opt = lambda k, d: argv[argv.index(k) + 1] if k in argv else d
 KIT = os.path.abspath(opt("--kit", "out/kit.json"))
 ITEMS = os.path.abspath(opt("--items", "out/items"))
 OUT = os.path.abspath(opt("--out", "out/kit.blend"))
+THUMBS = os.path.abspath(opt("--thumbs", os.path.join(os.path.dirname(OUT), "renders", "thumbs")))
 kit = json.load(open(KIT))
 name = kit.get("name") or "Kit"
 
@@ -83,11 +84,18 @@ for it in kit["items"]:
         lod = load(lod_path, f"{it['id']}_lod1", lods)
         lod.location = ob.location
         ob["lod1"] = lod.name
-    with bpy.context.temp_override(id=ob):
-        try:
-            bpy.ops.ed.lib_id_generate_preview()
-        except Exception as e:  # previews need a GPU context in some builds; the asset still works without one
-            print("preview skipped", it["id"], e)
+    # asset preview: use the item's thumbnail PNG when there is one (generating a preview needs a UI context, so it
+    # fails in background mode on 5.x); otherwise try the generator and carry on without
+    thumb = os.path.join(THUMBS, f"{it['id']}.png")
+    try:
+        if os.path.exists(thumb):
+            with bpy.context.temp_override(id=ob):
+                bpy.ops.ed.lib_id_load_custom_preview(filepath=thumb)
+        else:
+            with bpy.context.temp_override(id=ob):
+                bpy.ops.ed.lib_id_generate_preview()
+    except Exception as e:
+        print("preview skipped", it["id"], e)
 
 lods.hide_render = True
 lods.hide_viewport = True
