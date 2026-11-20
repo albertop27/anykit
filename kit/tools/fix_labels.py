@@ -52,7 +52,8 @@ LABELS = os.path.abspath(opt("--labels", "scenes/kit/labels.json"))
 ITEMS = os.path.abspath(opt("--items", "out/items"))
 OUT = os.path.abspath(opt("--out", "out/items_fixed"))
 ART = os.path.abspath(opt("--art", os.path.join(os.path.dirname(LABELS), "labels_art")))
-PY = opt("--py", "python")
+# default: the playground venv two levels above this fork (vendor/anykit -> .venv); override with --py
+PY = opt("--py", os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", ".venv", "Scripts", "python.exe")))
 PPM = opt("--ppm", "9000")
 spec = json.load(open(LABELS, encoding="utf-8"))
 labels = spec["labels"]
